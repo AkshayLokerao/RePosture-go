@@ -3,98 +3,166 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RePosture Order</title>
+  <title>RePosture – Order Now</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f7f9fc;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
       color: #333;
     }
 
-    h1, h2 {
+    header {
+      background-color: #212121;
+      color: white;
+      padding: 20px;
       text-align: center;
     }
 
-    form {
-      max-width: 500px;
-      margin: 0 auto;
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
       background: white;
-      padding: 20px;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    label {
+    .section-title {
+      margin-bottom: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    form label {
       display: block;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-weight: 600;
     }
 
-    input, textarea, select, button {
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
       width: 100%;
       padding: 10px;
-      margin-top: 5px;
+      margin-top: 8px;
       border-radius: 5px;
       border: 1px solid #ccc;
+      font-size: 16px;
     }
 
-    button {
-      background: #4CAF50;
+    input[type="submit"] {
+      margin-top: 30px;
+      background-color: #00796B;
       color: white;
+      padding: 14px 25px;
+      font-size: 16px;
       border: none;
-      margin-top: 20px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s;
     }
 
-    button:hover {
-      background: #45a049;
+    input[type="submit"]:hover {
+      background-color: #004D40;
+    }
+
+    .payment-methods {
+      margin-top: 20px;
     }
 
     .qr-section {
+      margin-top: 25px;
+      display: none;
       text-align: center;
-      margin: 20px 0;
     }
 
     .qr-section img {
-      width: 200px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      padding: 10px;
-      background: #fff;
-      border-radius: 8px;
+      width: 250px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 2px solid #00796B;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
 <body>
 
-  <h1>Order Your RePosture Device</h1>
-  <h2>Only ₹5000 – Limited Stock</h2>
+  <header>
+    <h1>RePosture Order Form</h1>
+  </header>
 
-  <form action="https://formsubmit.co/reposture.off@gmail.com" method="POST">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+  <div class="container">
+    <form action="https://formsubmit.co/reposture.off@gmail.com" method="POST">
+      <div class="section-title">Customer Details</div>
 
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required>
+      <label for="name">Full Name</label>
+      <input type="text" name="name" required>
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+      <label for="email">Email</label>
+      <input type="email" name="email" required>
 
-    <label for="address">Shipping Address:</label>
-    <textarea id="address" name="address" rows="4" required></textarea>
+      <label for="phone">Phone Number</label>
+      <input type="text" name="phone" required>
 
-    <div class="qr-section">
-      <strong>Scan to Pay ₹5000 via UPI</strong><br>
-      UPI ID: <b>lokerao22@okhdfcbank</b><br>
-      <img src="upi-qr.png" alt="UPI QR Code">
-    </div>
+      <label for="address">Shipping Address</label>
+      <textarea name="address" rows="4" required></textarea>
 
-    <label for="transaction_id">Enter UPI Transaction ID:</label>
-    <input type="text" id="transaction_id" name="transaction_id" placeholder="e.g. 1234567890UPI" required>
+      <label for="quantity">Quantity</label>
+      <select name="quantity" required>
+        <option value="1">1 Device – ₹5000</option>
+        <option value="2">2 Devices – ₹10000</option>
+        <option value="3">3 Devices – ₹15000</option>
+      </select>
 
-    <button type="submit">Place Order</button>
-  </form>
+      <input type="hidden" name="_subject" value="New Order Received">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="section-title">Payment Method</div>
+
+      <div class="payment-methods">
+        <label>
+          <input type="radio" name="payment_method" value="upi" checked onclick="showQR()"> Pay via UPI
+        </label>
+      </div>
+
+      <div class="qr-section" id="upiQR">
+        <p>Scan this QR code to pay ₹5000 using any UPI app. After payment, enter your transaction ID below.</p>
+        <img src="https://raw.githubusercontent.com/reposture/reposture/main/upi-qr.png" alt="UPI QR Code" />
+        <label for="transaction_id">Transaction ID</label>
+        <input type="text" name="transaction_id" required placeholder="Enter UPI Transaction ID" />
+      </div>
+
+      <input type="submit" value="Place Order">
+    </form>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 RePosture. All rights reserved.
+  </div>
+
+  <script>
+    function showQR() {
+      document.getElementById("upiQR").style.display = "block";
+    }
+
+    // show UPI section by default
+    window.onload = function () {
+      showQR();
+    };
+  </script>
 
 </body>
 </html>
