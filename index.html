@@ -8,13 +8,12 @@
 body{font-family:Arial,sans-serif;margin:0;background:#f4f7fb;color:#111}
 .hero{background:linear-gradient(135deg,#1696d2,#1ea7e1);color:#fff;padding:80px 20px}
 .container{max-width:1200px;margin:auto}
-.btn{background:#22c55e;color:#fff;padding:14px 24px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;display:inline-block}
+.btn{background:#22c55e;color:#fff;padding:14px 24px;border-radius:10px;text-decoration:none;border:none;cursor:pointer}
 .section{padding:70px 20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 .card{background:#fff;padding:25px;border-radius:15px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
 input,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
 .contact{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-.qr{max-width:320px;width:100%;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.15)}
 @media(max-width:800px){.contact{grid-template-columns:1fr}}
 </style>
 </head>
@@ -39,6 +38,16 @@ input,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border
 </div>
 </div>
 
+<div class="section container">
+<h2>How It Works</h2>
+<div class="grid">
+<div class="card">1. Wear the Device</div>
+<div class="card">2. Monitor Posture</div>
+<div class="card">3. Get Vibration Alerts</div>
+<div class="card">4. Track Progress</div>
+</div>
+</div>
+
 <div class="section container" id="order">
 <h2>Place Your Order</h2>
 
@@ -49,37 +58,76 @@ input,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border
 <input type="email" name="email" placeholder="Email" required>
 <input type="tel" name="phone" placeholder="Phone Number" required>
 <textarea name="address" placeholder="Delivery Address" required></textarea>
+<input type="text" name="transaction_id" placeholder="UPI Transaction ID">
 
-<div style="text-align:center">
-<h3>Scan & Pay</h3>
 <p><b>Price:</b> ₹8,999</p>
-<p><b>UPI:</b> lokerao22@okhdfcbank</p>
-<p>Replace the image below with your QR image file named <b>upi-qr.png</b> in the same folder.</p>
-<img src="upi-qr.png" class="qr" alt="UPI QR">
+<p><b>UPI:</b> lokerao22@okicici</p>
+  <p><b>Price:</b> ₹8,999</p>
+<p><b>UPI:</b> lokerao22@okicici</p>
+
+<a class="btn" href="upi://pay?pa=lokerao22@okicici&pn=RePosture&am=8999&cu=INR">
+Pay with UPI
+</a>
+
+<br><br>
+
+<!-- QR CODE START -->
+
+<div style="text-align:center;">
+
+<img
+src="upi-qr.png"
+alt="UPI QR Code"
+style="
+width:280px;
+max-width:100%;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.15);
+">
+
+<p style="margin-top:10px;">
+Scan QR using Google Pay, PhonePe, Paytm, BHIM or any UPI app.
+</p>
+
 </div>
 
-<input type="text" name="transaction_id" placeholder="UPI Transaction ID" required>
+<!-- QR CODE END -->
+
+<br>
+
+<a class="btn" href="upi://pay?pa=lokerao22@okicici&pn=RePosture&am=8999&cu=INR">Pay with UPI</a>
+<br><br>
 <button class="btn" type="submit">Submit Order</button>
 </form>
 </div>
 
 <div class="section container">
 <h2>Contact & Queries</h2>
+
 <div class="contact">
+
 <div class="card">
 <h3>Contact Information</h3>
-<p>Email: reposture.off@gmail.com</p>
-<p>+91 8125364598</p>
-<p>+91 7995997701</p>
+<p><b>Email:</b> reposture.off@gmail.com</p>
+<p><b>Phone:</b> +91 8125364598</p>
+<p><b>Phone:</b> +91 7995997701</p>
+<p><b>Response Time:</b> Within 24 Hours</p>
+<p><b>Support Hours:</b> 9 AM – 8 PM IST</p>
 </div>
+
 <div class="card">
+<h3>Send us a Message</h3>
+
 <form action="https://formsubmit.co/reposture.off@gmail.com" method="POST">
 <input type="hidden" name="_subject" value="RePosture Customer Query">
+
 <input type="text" name="name" placeholder="Your Name" required>
 <input type="email" name="email" placeholder="Email Address" required>
-<textarea name="message" rows="6" placeholder="How can we help you?" required></textarea>
+<textarea name="message" placeholder="How can we help you?" rows="6" required></textarea>
+
 <button class="btn" type="submit">Send Message</button>
 </form>
+
 </div>
 </div>
 </div>
